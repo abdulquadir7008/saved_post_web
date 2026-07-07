@@ -49,7 +49,7 @@ export default function FeedPage({ params }: { params: Promise<{ courseId: strin
        <div className="space-y-1 page-hero grid grid-cols-2 lg:grid-cols-2 gap-1 bg-remove">
           <div className="px-6 pt-9">
             <div className="text-sm text-purple-600 font-semibold">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="opacity-90 float-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="opacity-90 float-left">
                 <path d="M12 2l3 6h6l-4.8 3.6L20 20l-8-5-8 5 1.8-8.4L1 8h6L12 2z" fill="#7c3aed"></path>
               </svg> 
               DISCUSSION FORUM</div>
