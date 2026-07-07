@@ -5,7 +5,9 @@ import { useI18n } from "@/lib/i18n/context";
 import { formatRelativeTime } from "@/lib/relative-time";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faCode, faFileLines, faStar, faUsers } from "@fortawesome/free-solid-svg-icons";
-import type { SavedPost } from "@/lib/api-client";
+import type { Post } from "@/lib/api-client";
+
+type SavedPostCardPost = Post & { savedAt?: string };
 
 const categoryMap = [
   { keyword: "assignment", label: "Assignment", color: "amber", icon: faCode },
@@ -13,7 +15,7 @@ const categoryMap = [
   { keyword: "cheat", label: "Course Material", color: "emerald", icon: faFileLines },
 ];
 
-function getCategory(post: SavedPost) {
+function getCategory(post: SavedPostCardPost) {
   const title = post.title.toLowerCase();
   const match = categoryMap.find((item) => title.includes(item.keyword));
   if (match) return match;
@@ -46,7 +48,7 @@ function accentStyles(color: string) {
   }
 }
 
-export function SavedPostCard({ post, onToggleSave, isTogglePending }: { post: SavedPost; onToggleSave: () => void; isTogglePending: boolean }) {
+export function SavedPostCard({ post, onToggleSave, isTogglePending }: { post: SavedPostCardPost; onToggleSave: () => void; isTogglePending: boolean }) {
   const { t } = useI18n();
   const [createdLabel, setCreatedLabel] = useState(t("time.justNow"));
   const [savedLabel, setSavedLabel] = useState<string | null>(t("time.justNow"));
